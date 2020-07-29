@@ -7,7 +7,7 @@ RUN deluser node && \
     chown :1059 /data/foundryvtt && \
     chmod 775 /data/foundryvtt && \
     addgroup --gid 1059 gamers && \
-    adduser --disabled-password --gecos "" --force-badname --ingroup 1059 fvtt && \
+    adduser --disabled-password --ingroup 1059 fvtt && \
     chown fvtt:gamers /opt/foundryvtt && \
     chmod g+s /opt/foundryvtt && \
     chmod g+s /data/foundryvtt
