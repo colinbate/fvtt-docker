@@ -19,19 +19,14 @@ jobs:
         with:
           buildx-version: latest
 
-      - name: Login to docker hub
-        if: success()
-        uses: actions-hub/docker/login@master
+      - name: Docker Login
+        if: success() && github.event_name != 'pull_request'
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
 
       - name: Build image
         if: success()
-        run: docker buildx build --platform linux/arm/v7 -t docker.io/colinbate/foundry-vtt-arm7:latest --output type=local,dest=. .
-
-      - name: Push to docker registry
-        if: success()
-        uses: actions-hub/docker@master
-        with:
-          args: push colinbate/foundry-vtt-arm7:latest
+        run: docker buildx build --platform linux/arm/v7 -t colinbate/foundry-vtt-arm7:latest --push .
