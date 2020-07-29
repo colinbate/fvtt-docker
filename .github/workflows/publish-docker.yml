@@ -17,7 +17,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: crazy-max/ghaction-docker-buildx@v1
         with:
-          version: latest
+          buildx-version: latest
 
       - name: Login to docker hub
         if: success()
@@ -28,4 +28,4 @@ jobs:
 
       - name: Build image
         if: success()
-        run: docker buildx build --platform linux/arm/v7 -t colinbate/foundry-vtt-arm7:latest --output type=image,push=true .
+        run: docker buildx build --platform linux/arm/v7 -t docker.io/colinbate/foundry-vtt-arm7:latest --output type=image,name=docker.io/colinbate/foundry-vtt-arm7,push=true .
