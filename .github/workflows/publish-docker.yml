@@ -28,7 +28,7 @@ jobs:
 
       - name: Build image
         if: success()
-        run: docker buildx build --platform linux/arm/v7 -t docker.io/colinbate/foundry-vtt-arm7:latest --output type=image,name=docker.io/colinbate/foundry-vtt-arm7 .
+        run: docker buildx build --platform linux/arm/v7 -t docker.io/colinbate/foundry-vtt-arm7:latest --output type=local,dest=. .
 
       - name: Push to docker registry
         if: success()
