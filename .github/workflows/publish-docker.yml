@@ -29,4 +29,4 @@ jobs:
 
       - name: Build image
         if: success()
-        run: docker buildx build --platform linux/arm/v7 -t colinbate/foundry-vtt-arm7:test --push .
+        run: docker buildx build --platform linux/arm/v7 -t colinbate/foundry-vtt-arm7:latest --push .
