@@ -28,10 +28,10 @@ jobs:
 
       - name: Build image
         if: success()
-        run: docker buildx build --platform linux/arm/v7 -t colinbate/foundry-vtt-arm7:${GITHUB_RUN_NUMBER} .
+        run: docker buildx build --platform linux/arm/v7 -t colinbate/foundry-vtt-arm7:latest .
 
       - name: Push to docker registry
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push colinbate/foundry-vtt-arm7:${GITHUB_RUN_NUMBER}
+          args: push colinbate/foundry-vtt-arm7:latest
