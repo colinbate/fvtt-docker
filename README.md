@@ -2,7 +2,7 @@
 
 <a href="https://patreon.com/direckthit"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fdireckthit&style=for-the-badge" /> </a>
 
-## Foundry VTT - Docker
+## Foundry VTT - Docker - ARMv7
 
 This repository hosts the Foundry VTT `Dockerfile` for [direckthit/fvtt-docker](https://hub.docker.com/r/direckthit/fvtt-docker) on Docker Hub.
 

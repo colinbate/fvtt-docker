@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM arm32v7/node:12-alpine
 
 RUN deluser node && \
     mkdir /opt/foundryvtt && \

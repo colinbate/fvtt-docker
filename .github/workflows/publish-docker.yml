@@ -14,6 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set up Docker Buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
+
       - name: Login to docker hub
         if: success()
         uses: actions-hub/docker/login@master
@@ -23,10 +28,10 @@ jobs:
 
       - name: Build image
         if: success()
-        run: docker build -t direckthit/fvtt-docker:${IMAGE_TAG} .
+        run: docker buildx build --platform linux/arm/v7 -t colinbate/foundry-vtt-arm7:${GITHUB_RUN_NUMBER} .
 
       - name: Push to docker registry
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push direckthit/fvtt-docker:${IMAGE_TAG}
+          args: push colinbate/foundry-vtt-arm7:${GITHUB_RUN_NUMBER}
